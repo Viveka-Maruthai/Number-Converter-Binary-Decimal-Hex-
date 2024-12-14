@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Number Converter</h1>
+    <input type="text" id="inputNumber" placeholder="Enter number" oninput="clearResult()">
+    <div>
+      <button onclick="convertToBinary()">Convert to Binary</button>
+      <button onclick="convertToDecimal()">Convert to Decimal</button>
+      <button onclick="convertToHex()">Convert to Hexadecimal</button>
+    </div>
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    // Function to clear the result section
+    function clearResult() {
+      document.getElementById("result").textContent = '';
+    }
+
+    // Convert to Binary
+    function convertToBinary() {
+      const number = document.getElementById("inputNumber").value;
+      if (isNaN(number) || number === '') {
+        document.getElementById("result").textContent = "Please enter a valid number.";
+        return;
+      }
+      const binary = parseInt(number).toString(2);
+      document.getElementById("result").textContent = `Binary: ${binary}`;
+    }
+
+    // Convert to Decimal
+    function convertToDecimal() {
+      const number = document.getElementById("inputNumber").value;
+      if (isNaN(number) || number === '') {
+        document.getElementById("result").textContent = "Please enter a valid number.";
+        return;
+      }
+      const decimal = parseInt(number, 2);
+      document.getElementById("result").textContent = `Decimal: ${decimal}`;
+    }
+
+    // Convert to Hexadecimal
+    function convertToHex() {
+      const number = document.getElementById("inputNumber").value;
+      if (isNaN(number) || number === '') {
+        document.getElementById("result").textContent = "Please enter a valid number.";
+        return;
+      }
+      const hex = parseInt(number).toString(16).toUpperCase();
+      document.getElementById("result").textContent = `Hexadecimal: ${hex}`;
+    }
+  </script>
+
+</body>
+</html>
